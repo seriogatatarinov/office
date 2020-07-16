@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: Office application
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/office_db
+    username: ${OFFICE_DB_USER}
+    password: ${OFFICE_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 16
+      auto-commit: false
+      connection-timeout: 10000
+      idle-timeout: 60000
+      minimum-idle: 2
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.format_sql: true
+      hibernate.jdbc.lob.non_contextual_creation: true
+  liquibase:
+    change-log: classpath:liquibase/changelog/changelog.xml
+  data:
+    neo4j:
+      open-in-view: false
+
