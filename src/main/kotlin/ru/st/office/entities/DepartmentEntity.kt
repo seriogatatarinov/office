@@ -1,5 +1,6 @@
 package ru.st.office.demo.entities
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Entity
@@ -14,6 +15,7 @@ class DepartmentEntity(
                 orphanRemoval = true,
                 cascade = [CascadeType.ALL]
         )
+        @JsonBackReference
         val employees: MutableList<EmployeeEntity> = mutableListOf()
 ) : BaseAuditEntity<Long>() {
 
