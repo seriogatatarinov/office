@@ -10,7 +10,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 class OfficeApplication
 
 fun main(args: Array<String>) {
-    var getenv = System.getenv()
-    print(getenv)
     runApplication<OfficeApplication>(*args)
 }
