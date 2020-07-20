@@ -7,7 +7,8 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
-import ru.st.office.demo.entities.DepartmentEntity
+import ru.st.office.entity.DepartmentEntity
+import ru.st.office.filter.DepartmentCriteria
 import ru.st.office.service.DepartmentService
 
 @RestController
@@ -29,5 +30,9 @@ class DepartmentController(@Autowired val departmentService: DepartmentService) 
     @DeleteMapping("/{id}")
     @ApiOperation("Delete department by id")
     fun deleteDepartmentById(@PathVariable id: Long) = departmentService.deleteById(id)
+
+    @GetMapping("/filter")
+    @ApiOperation("Filter departments")
+    fun filter(departmentCriteria: DepartmentCriteria, pageable: Pageable) = departmentService.filter(departmentCriteria, pageable)
 
 }

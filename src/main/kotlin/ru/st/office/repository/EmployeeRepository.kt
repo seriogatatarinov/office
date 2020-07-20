@@ -1,12 +1,12 @@
-package ru.st.office.demo.repositories
+package ru.st.office.demo.repository
 
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
-import ru.st.office.demo.entities.EmployeeEntity
+import ru.st.office.entity.EmployeeEntity
+import ru.st.office.repository.AbstractRepository
 
 @Repository
-interface EmployeeRepository : JpaRepository<EmployeeEntity, Long> {
+interface EmployeeRepository : AbstractRepository<EmployeeEntity, Long> {
     fun findAllByFirstName(pageable: Pageable, name: String): Page<EmployeeEntity>
 }

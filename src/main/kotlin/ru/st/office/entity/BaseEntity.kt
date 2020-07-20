@@ -1,4 +1,4 @@
-package ru.st.office.demo.entities
+package ru.st.office.entity
 
 import org.springframework.data.util.ProxyUtils
 import javax.persistence.GeneratedValue

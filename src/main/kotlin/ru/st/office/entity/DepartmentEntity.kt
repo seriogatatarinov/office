@@ -1,4 +1,4 @@
-package ru.st.office.demo.entities
+package ru.st.office.entity
 
 import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
@@ -7,7 +7,7 @@ import javax.persistence.*
 @Table(name = "department")
 class DepartmentEntity(
 
-        val name: String,
+        var name: String = "",
 
         @OneToMany(
                 mappedBy = "department",
@@ -16,7 +16,7 @@ class DepartmentEntity(
                 cascade = [CascadeType.ALL]
         )
         @JsonBackReference
-        val employees: MutableList<EmployeeEntity> = mutableListOf()
+        var employees: MutableList<EmployeeEntity> = mutableListOf()
 ) : BaseAuditEntity<Long>() {
 
     fun addEmployee(block: DepartmentEntity.() -> EmployeeEntity) {

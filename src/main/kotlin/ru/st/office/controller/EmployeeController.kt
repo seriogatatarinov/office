@@ -7,7 +7,8 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
-import ru.st.office.demo.entities.EmployeeEntity
+import ru.st.office.entity.EmployeeEntity
+import ru.st.office.filter.EmployeeCriteria
 import ru.st.office.service.EmployeeService
 
 @RestController
@@ -29,5 +30,9 @@ class EmployeeController(@Autowired val employeeService: EmployeeService) {
     @DeleteMapping("/{id}")
     @ApiOperation("Delete employee by id")
     fun deleteEmployeeById(@PathVariable id: Long) = employeeService.deleteById(id)
+
+    @GetMapping("/filter")
+    @ApiOperation("Filter employees")
+    fun filter(@ModelAttribute employeeCriteria: EmployeeCriteria, @PageableDefault pageable: Pageable) = employeeService.filter(employeeCriteria, pageable)
 
 }

@@ -1,4 +1,4 @@
-package ru.st.office.demo.entities
+package ru.st.office.entity
 
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.Entity
@@ -10,12 +10,13 @@ import javax.persistence.Table
 @Table(name = "employee")
 class EmployeeEntity(
 
-        val firstName: String,
+        var firstName: String = "",
 
         var lastName: String? = null,
 
         @ManyToOne
         @JoinColumn(name = "department_id")
         @JsonManagedReference
-        val department: DepartmentEntity
-) : BaseAuditEntity<Long>()
+        var department: DepartmentEntity = DepartmentEntity()
+) : BaseAuditEntity<Long>() {
+}
