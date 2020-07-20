@@ -1,5 +1,6 @@
 package ru.st.office.controller
 
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -14,15 +15,19 @@ import ru.st.office.service.EmployeeService
 class EmployeeController(@Autowired val employeeService: EmployeeService) {
 
     @GetMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun employees(@PageableDefault pageable: Pageable): Page<EmployeeEntity> = employeeService.findAll(pageable)
+    @ApiOperation("Get list of employees")
+    fun findAll(@PageableDefault pageable: Pageable): Page<EmployeeEntity> = employeeService.findAll(pageable)
 
     @GetMapping("/{id}")
-    fun getEmployeeById(@PathVariable id: Long): EmployeeEntity = employeeService.findById(id).orElse(null)
+    @ApiOperation("Find employee by id")
+    fun findEmployeeById(@PathVariable id: Long): EmployeeEntity = employeeService.findById(id).orElse(null)
 
     @PostMapping
+    @ApiOperation("Save employee")
     fun saveEmployee(@RequestBody employeeEntity: EmployeeEntity) = employeeService.save(employeeEntity)
 
     @DeleteMapping("/{id}")
+    @ApiOperation("Delete employee by id")
     fun deleteEmployeeById(@PathVariable id: Long) = employeeService.deleteById(id)
 
 }

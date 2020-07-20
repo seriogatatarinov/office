@@ -1,5 +1,6 @@
 package ru.st.office.controller
 
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -14,15 +15,19 @@ import ru.st.office.service.DepartmentService
 class DepartmentController(@Autowired val departmentService: DepartmentService) {
 
     @GetMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun departments(@PageableDefault pageable: Pageable): Page<DepartmentEntity> = departmentService.findAll(pageable)
+    @ApiOperation("Get list of departments")
+    fun findAll(@PageableDefault pageable: Pageable): Page<DepartmentEntity> = departmentService.findAll(pageable)
 
     @GetMapping("/{id}")
-    fun getDepartmentById(@PathVariable id: Long): DepartmentEntity = departmentService.findById(id).orElse(null)
+    @ApiOperation("Find department by id")
+    fun findDepartmentById(@PathVariable id: Long): DepartmentEntity = departmentService.findById(id).orElse(null)
 
     @PostMapping
+    @ApiOperation("Save department")
     fun saveDepartment(@RequestBody departmentEntity: DepartmentEntity) = departmentService.save(departmentEntity)
 
     @DeleteMapping("/{id}")
+    @ApiOperation("Delete department by id")
     fun deleteDepartmentById(@PathVariable id: Long) = departmentService.deleteById(id)
 
 }
