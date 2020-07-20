@@ -3,6 +3,8 @@ package ru.st.office.service.impl
 import org.hibernate.Session
 import org.hibernate.query.Query
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import ru.st.office.demo.entities.DepartmentEntity
 import ru.st.office.demo.repositories.DepartmentRepository
@@ -21,10 +23,11 @@ class DepartmentServiceImpl(@Autowired val departmentRepository: DepartmentRepos
         departmentRepository.deleteById(id)
     }
 
-    override fun findAll(): List<DepartmentEntity> {
-        val currentSession: Session = entityManager.unwrap(Session::class.java)
-        val query: Query<DepartmentEntity> = currentSession.createQuery("from DepartmentEntity", DepartmentEntity::class.java)
-        val resultList: MutableList<DepartmentEntity> = query.resultList
-        return resultList
+    override fun findAll(pageable: Pageable): Page<DepartmentEntity> {
+        return departmentRepository.findAll(pageable)
+    }
+
+    override fun findAllByName(pageable: Pageable, name: String): Page<DepartmentEntity> {
+        return departmentRepository.findAllByName(pageable, name)
     }
 }

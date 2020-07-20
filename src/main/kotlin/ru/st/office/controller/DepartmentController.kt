@@ -1,6 +1,9 @@
 package ru.st.office.controller
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.web.PageableDefault
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 import ru.st.office.demo.entities.DepartmentEntity
@@ -11,7 +14,7 @@ import ru.st.office.service.DepartmentService
 class DepartmentController(@Autowired val departmentService: DepartmentService) {
 
     @GetMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun departments(): List<DepartmentEntity> = departmentService.findAll()
+    fun departments(@PageableDefault pageable: Pageable): Page<DepartmentEntity> = departmentService.findAll(pageable)
 
     @GetMapping("/{id}")
     fun getDepartmentById(@PathVariable id: Long): DepartmentEntity = departmentService.findById(id).orElse(null)

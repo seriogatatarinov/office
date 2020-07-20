@@ -14,9 +14,9 @@ abstract class BaseAuditEntity<T> : BaseEntity<T>() {
 
     @CreatedDate
     @Column(updatable = false, nullable = false)
-    lateinit var created: LocalDateTime
+    lateinit var createdAt: LocalDateTime
 
     @LastModifiedDate
     @Column(nullable = false)
-    lateinit var modified: LocalDateTime
+    lateinit var modifiedAt: LocalDateTime
 }

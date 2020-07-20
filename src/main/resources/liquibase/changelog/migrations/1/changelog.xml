@@ -3,8 +3,14 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet id="1" author="obklimenko">
-        <sqlFile path="sql/1.sql" relativeToChangelogFile="true"/>
+    <changeSet id="1" author="statarinov">
+        <sqlFile path="sql/20200716-create-department-employee-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="2" author="statarinov">
+        <sqlFile path="sql/20200720-rename-audit-columns.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="3" author="statarinov">
+        <sqlFile path="sql/20200720-insert-values-into-tables.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
 </databaseChangeLog>

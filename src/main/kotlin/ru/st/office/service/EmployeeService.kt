@@ -1,5 +1,7 @@
 package ru.st.office.service
 
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import ru.st.office.demo.entities.EmployeeEntity
 import java.util.*
 
@@ -11,5 +13,7 @@ interface EmployeeService {
 
     fun deleteById(id: Long)
 
-    fun findAll(): List<EmployeeEntity>
+    fun findAll(pageable: Pageable): Page<EmployeeEntity>
+
+    fun findAllByFirstName(pageable: Pageable, name: String): Page<EmployeeEntity>
 }
