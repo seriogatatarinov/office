@@ -1,11 +1,10 @@
 package ru.st.office.dto
 
-import ru.st.office.entity.DepartmentEntity
-import java.time.LocalDateTime
+import io.swagger.annotations.ApiModel
+import io.swagger.annotations.ApiModelProperty
+import javax.validation.constraints.NotNull
 
-data class EmployeeDto(var firstName: String = "",
-                       var lastName: String = "",
-                       var department: DepartmentEntity = DepartmentEntity(),
-                       var createdAt: LocalDateTime = LocalDateTime.now(),
-                       var modifiedAt: LocalDateTime = LocalDateTime.now()) {
-}
+@ApiModel(description = "Employee")
+data class EmployeeDto(@NotNull @ApiModelProperty("First name") var firstName: String = "",
+                       @ApiModelProperty("Last name") var lastName: String? = "",
+                       @ApiModelProperty("Department") var departmentId: Long = 0L) : BaseDto()

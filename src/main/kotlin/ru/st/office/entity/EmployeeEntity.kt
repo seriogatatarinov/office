@@ -12,11 +12,10 @@ class EmployeeEntity(
 
         var firstName: String = "",
 
-        var lastName: String? = null,
+        var lastName: String? = "",
 
         @ManyToOne
         @JoinColumn(name = "department_id")
         @JsonManagedReference
         var department: DepartmentEntity = DepartmentEntity()
-) : BaseAuditEntity<Long>() {
-}
+) : BaseAuditEntity<Long>()

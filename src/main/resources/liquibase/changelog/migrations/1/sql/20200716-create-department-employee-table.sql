@@ -1,9 +1,9 @@
 CREATE TABLE department
 (
-    id          BIGSERIAL PRIMARY KEY,
-    name        TEXT      NOT NULL,
-    created     TIMESTAMP NOT NULL,
-    modified    TIMESTAMP NOT NULL
+    id       BIGSERIAL PRIMARY KEY,
+    name     TEXT      NOT NULL,
+    created  TIMESTAMP NOT NULL,
+    modified TIMESTAMP NOT NULL
 );
 
 CREATE TABLE employee

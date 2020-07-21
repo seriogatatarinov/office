@@ -1,9 +1,8 @@
 package ru.st.office.dto
 
-import java.time.LocalDateTime
+import io.swagger.annotations.ApiModel
+import io.swagger.annotations.ApiModelProperty
+import javax.validation.constraints.NotNull
 
-class DepartmentDto(var name: String = "",
-                    var employees: MutableList<EmployeeDto> = mutableListOf<EmployeeDto>(),
-                    var createdAt: LocalDateTime = LocalDateTime.now(),
-                    var modifiedAt: LocalDateTime = LocalDateTime.now()) {
-}
+@ApiModel(description = "Department")
+data class DepartmentDto(@NotNull @ApiModelProperty("First name") var name: String = "") : BaseDto()

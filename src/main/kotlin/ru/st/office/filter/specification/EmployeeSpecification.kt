@@ -11,18 +11,18 @@ import javax.persistence.criteria.Root
 class EmployeeSpecification(var employeeCriteria: EmployeeCriteria) : AbstractSpecification<EmployeeEntity>() {
 
     override fun addConditions(root: Root<EmployeeEntity>, criteriaBuilder: CriteriaBuilder?, predicate: Predicate?, criteriaQuery: CriteriaQuery<*>?): Predicate? {
-        Optional.ofNullable(employeeCriteria.firstName).ifPresent{
+        Optional.ofNullable(employeeCriteria.firstName).ifPresent {
             addLikeCondition(predicate!!, criteriaBuilder!!, it, root.get<String>("firstName"))
         }
-        Optional.ofNullable(employeeCriteria.lastName).ifPresent{
+        Optional.ofNullable(employeeCriteria.lastName).ifPresent {
             addLikeCondition(predicate!!, criteriaBuilder!!, it, root.get<String>("lastName"))
         }
-        Optional.ofNullable(employeeCriteria.createdAt).ifPresent{
+        Optional.ofNullable(employeeCriteria.createdAt).ifPresent {
             addEqualCondition(predicate!!, criteriaBuilder!!, it, root.get<String>("createdAt"))
         }
-        Optional.ofNullable(employeeCriteria.modifiedAt).ifPresent{
+        Optional.ofNullable(employeeCriteria.modifiedAt).ifPresent {
             addEqualCondition(predicate!!, criteriaBuilder!!, it, root.get<String>("modifiedAt"))
         }
-        return predicate;
+        return predicate
     }
 }
