@@ -7,4 +7,4 @@ import javax.validation.constraints.NotNull
 @ApiModel(description = "Employee")
 data class EmployeeDto(@NotNull @ApiModelProperty("First name") var firstName: String = "",
                        @ApiModelProperty("Last name") var lastName: String? = "",
-                       @ApiModelProperty("Department") var departmentId: Long = 0L) : BaseDto()
+                       @ApiModelProperty("Department") var departmentId: Long = 0L) : BaseAuditDto()

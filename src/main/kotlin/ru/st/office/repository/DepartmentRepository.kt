@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository
 import ru.st.office.entity.DepartmentEntity
 
 @Repository
-interface DepartmentRepository : AbstractRepository<DepartmentEntity, Long> {
+interface DepartmentRepository : BaseAuditRepository<DepartmentEntity, Long> {
 
     fun findOneByName(name: String): DepartmentEntity
 

@@ -17,7 +17,7 @@ class DepartmentEntity(
         )
         @JsonBackReference
         var employees: MutableList<EmployeeEntity> = mutableListOf()
-) : BaseAuditEntity<Long>() {
+) : BaseAuditEntity() {
 
     fun addEmployee(block: DepartmentEntity.() -> EmployeeEntity) {
         employees.add(block())

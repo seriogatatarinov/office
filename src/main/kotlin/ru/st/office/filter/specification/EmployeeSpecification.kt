@@ -23,6 +23,9 @@ class EmployeeSpecification(var employeeCriteria: EmployeeCriteria) : AbstractSp
         Optional.ofNullable(employeeCriteria.modifiedAt).ifPresent {
             addEqualCondition(predicate!!, criteriaBuilder!!, it, root.get<String>("modifiedAt"))
         }
+        Optional.ofNullable(employeeCriteria.departmentId).ifPresent {
+            addEqualCondition(predicate!!, criteriaBuilder!!, it, root.join<Any, Any>("department").get<String>("id"))
+        }
         return predicate
     }
 }

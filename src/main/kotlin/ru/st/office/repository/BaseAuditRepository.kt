@@ -4,4 +4,4 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor
 import ru.st.office.entity.BaseAuditEntity
 
-interface AbstractRepository<T : BaseAuditEntity<*>?, ID> : JpaRepository<T, ID>, JpaSpecificationExecutor<T>
+interface BaseAuditRepository<T : BaseAuditEntity?, ID> : JpaRepository<T, ID>, JpaSpecificationExecutor<T>

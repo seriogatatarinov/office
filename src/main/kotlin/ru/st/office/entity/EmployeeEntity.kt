@@ -18,4 +18,4 @@ class EmployeeEntity(
         @JoinColumn(name = "department_id")
         @JsonManagedReference
         var department: DepartmentEntity = DepartmentEntity()
-) : BaseAuditEntity<Long>()
+) : BaseAuditEntity()
